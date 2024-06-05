@@ -1,12 +1,11 @@
 import React from 'react'
 import { useScaffoldReadContract } from "../hooks/scaffold-eth"
-import { useAccount } from 'wagmi'
 import SpaceCard from "./SpaceCard"
 
 
 const AllgetSpace = () => {
 
-    const { data: spaceLength, isLoading: isSpaceLengthLoading } = useScaffoldReadContract({
+    const { data: spaceLength } = useScaffoldReadContract({
         contractName: "GetSpaceMarketplace",
         functionName: "spaceLength",
         args: []
@@ -18,7 +17,7 @@ const AllgetSpace = () => {
         if(!spaceLength) return null;
         const spaces = [];
         for(let i = 0; i < spaceLen; i++) {
-          spaces.push(<HouseCard id={i} />)
+          spaces.push(<SpaceCard id={i} />)
         }
         return spaces;
       }

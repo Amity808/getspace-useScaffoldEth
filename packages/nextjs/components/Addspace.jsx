@@ -1,9 +1,10 @@
 'use client'
-import React, { useState, useRef } from 'react'
+import React, { useState } from 'react'
 import { useScaffoldWriteContract  } from "../hooks/scaffold-eth";
-import { useAccount } from 'wagmi';
 import useLoading from "../hooks/useLoading";
 import useNotification from "../hooks/useNotification"
+import { IoMdCloseCircle } from "react-icons/io";
+
 
 const Addspace = () => {
 
@@ -68,6 +69,7 @@ const Addspace = () => {
           className="flex justify-center fixed left-0 top-0 items-center w-full h-full mt-6"
         >
           <div className="w-[600px] rounded-2xl bg-slate-100 p-5">
+            <p>{notification}</p>
             <form onSubmit={addSpace}>
               <div className="mb-8">
                 <input
@@ -126,7 +128,7 @@ const Addspace = () => {
                 <button
                   type="submit"
                   className=" border-4 text-white border-[#EFAE07] bg-[#06102b] px-4 py-2 rounded-full"
-                  disabled={isLoadCreate}
+                  disabled={isLoadCreate || isLoading || isPending}
                 >
                   {isLoadCreate ? "Loading..." : "Add space"}  
                 </button>
