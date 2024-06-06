@@ -1,11 +1,11 @@
 "use client";
 
-import Link from "next/link";
+// import Link from "next/link";
 import type { NextPage } from "next";
 
 import React from 'react'
 
-type Props = {}
+
 
 const Space: NextPage = () => {
   return (

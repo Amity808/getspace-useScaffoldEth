@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useCallback } from 'react'
-import { useScaffoldWriteContract, useScaffoldReadContract } from "../hooks/scaffold-eth";
-import { toast } from "react-toastify";
-import useLoading from "../hooks/useLoading";
+import { useScaffoldReadContract } from "../hooks/scaffold-eth";
+// import { toast } from "react-toastify";
+// import useLoading from "../hooks/useLoading";
 import Link from "next/link";
 import { truuncateAddress } from "~~/helpers/trucateAddress"
 
 type Props = {
-    id: Number
+    id: number
 }
 
 interface SpaceData {
@@ -24,11 +24,11 @@ interface SpaceData {
 
 const SpaceCard = (props: Props) => {
 
-    const { isLoading, startLoading, stopLoading } = useLoading()
+    // const { isLoading, startLoading, stopLoading } = useLoading()
 
     const [spaceData, setSpaceData] = useState<SpaceData | null>(null);
 
-    const { data: fetchSpace, isLoading: isfetchSpaceLoading } = useScaffoldReadContract({
+    const { data: fetchSpace } = useScaffoldReadContract({
         contractName: "GetSpaceMarketplace",
         functionName: "_space",
         args: [props.id]
